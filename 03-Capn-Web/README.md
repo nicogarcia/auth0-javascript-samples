@@ -55,19 +55,11 @@ capn-web-auth0-demo/
 │   └── index.js              # WebSocket RPC server with JWT validation
 ├── scripts/                   # Maintenance and setup scripts
 │   └── cleanup.sh            # Repository validation script
-├── .github/                   # GitHub-specific files
-│   ├── copilot-instructions.md
-│   ├── FUNDING.yml
-│   └── RELEASE_CHECKLIST.md
-├── .vscode/                   # VS Code configuration
-│   └── tasks.json            # Development tasks
 ├── .env.example              # Environment configuration template
-├── .editorconfig             # Code formatting rules
 ├── .gitignore                # Git ignore patterns
 ├── CONTRIBUTING.md           # Contribution guidelines
 ├── Dockerfile                # Container configuration
 ├── docker-compose.yml        # Multi-container development setup
-├── LICENSE                   # MIT license
 └── package.json              # Dependencies, scripts, and metadata
 ```
 
@@ -75,8 +67,8 @@ capn-web-auth0-demo/
 
 1. **Clone and install dependencies:**
    ```bash
-   git clone https://github.com/YOUR_USERNAME/capn-web-auth0-demo.git
-   cd capn-web-auth0-demo
+   git clone https://github.com/auth0-samples/auth0-javascript-samples.git
+   cd 03-Capn-Web
    npm install
    ```
 

@@ -1,0 +1,14 @@
+logs
+*.log
+npm-debug.log*
+
+node_modules
+
+.auth0.config.json
+
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?

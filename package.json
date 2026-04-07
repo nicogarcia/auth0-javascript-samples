@@ -1,0 +1,17 @@
+{
+  "name": "auth0-javascript-samples",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "node tools/check-port.cjs && node tools/start.cjs",
+    "auth0-config": "node tools/auth0-config.cjs"
+  },
+  "devDependencies": {
+    "detect-port": "^2.1.0",
+    "http-server": "^14.1.1",
+    "js-yaml": "^4.1.1"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

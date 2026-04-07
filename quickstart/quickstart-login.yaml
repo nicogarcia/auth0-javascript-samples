@@ -1,0 +1,107 @@
+appType: "spa"
+technology: "javascript"
+technologyLabel: "JavaScript"
+sdkVersion: &sdkVersion "2.18"
+defaultAppOrigin:
+  scheme: &appScheme "http"
+  domain: &appDomain "localhost"
+  port: &port 3000
+outputFolderName: &outputFolderName "auth0-javascript-samples"
+callbackPath: "/"
+logoutPath: "/"
+defaultEnvFileName: &defaultEnvFileName "index.html"
+
+inputs:
+  auth0Domain:
+  auth0ClientId:
+  port:
+    default: *port
+  appDomain:
+    default: *appDomain
+  appScheme:
+    default: *appScheme
+
+placeholders:
+  "%GIT_REMOTE%":
+    environmentKey: "gitRemote"
+  "%GIT_BRANCH%":
+    environmentKey: "gitBranch"
+  "%DOWNLOAD_URL%":
+    environmentKey: "downloadUrl"
+  "%FOLDER_NAME%": *outputFolderName
+  "%PORT%":
+    inputKey: "port"
+  "%AUTH0_DOMAIN%":
+    inputKey: "auth0Domain"
+  "%AUTH0_CLIENT_ID%":
+    inputKey: "auth0ClientId"
+  "%SDK_VERSION%": *sdkVersion
+  "%APP_DOMAIN%":
+    inputKey: "appDomain"
+  "%APP_SCHEME%":
+    inputKey: "appScheme"
+
+snippets:
+  get-app: &getApp
+    source: "quickstart/scripts/get-app.sh"
+    language: "bash"
+  configure-and-start: &configureAndStart
+    source: "quickstart/scripts/configure-and-start.sh"
+    language: "bash"
+  run-app: &runApp
+    source: "quickstart/scripts/run-app.sh"
+    language: "bash"
+  index-html: &indexHtml
+    source: "index.html"
+    language: "html"
+
+tryOutStep: &tryOutStep
+  - title: "Try it out"
+    contentBlocks:
+      - type: markdown
+        content: |
+          1. Open the application at [%APP_SCHEME%://%APP_DOMAIN%:%PORT%](%APP_SCHEME%://%APP_DOMAIN%:%PORT%).
+          1. Click **Signup** to create a new user in your Auth0 tenant.
+          This will redirect you to the Auth0 Universal Login page to complete the signup process.
+          1. Once back in the app, view the details of the newly created user in the **User Profile** section.
+
+download:
+  - title: "Clone or download the sample app"
+    contentBlocks:
+      - type: markdown
+        content: "Clone the sample application with the following command."
+      - type: terminal
+        <<: *getApp
+      - type: markdown
+        content: "Don't have `git` at hand? [Open in Visual Studio Code](vscode://vscode.git/clone?url=%GIT_REMOTE%&ref=%GIT_BRANCH%) or [Download as ZIP](%DOWNLOAD_URL%)"
+  - title: "Link the sample app to Auth0"
+    contentBlocks:
+      - type: markdown
+        content: "Install the dependencies and link the sample app to the current Auth0 Tenant and Application using the following command."
+      - type: terminal
+        <<: *configureAndStart
+      - type: markdown
+        content: "The application will start on port `%PORT%` defined in the Application Origin."
+  - <<: *tryOutStep
+
+steps:
+  - title: "Add login, logout, and user profile"
+    contentBlocks:
+      - type: markdown
+        content: "Initialize the Auth0 SDK with your credentials, handle the post-login redirect callback, then render the user profile and a login or logout button based on authentication state."
+      - type: snippet
+        <<: *indexHtml
+  - title: "Run the application"
+    contentBlocks:
+      - type: markdown
+        content: "Run your application. If you don't have one yet, you can serve this sample with the following command."
+      - type: terminal
+        <<: *runApp
+  - <<: *tryOutStep
+
+nextSteps:
+  links:
+    - label: "Calling Protected APIs"
+      url: "https://auth0.com/docs/quickstart/spa/vanillajs#calling-protected-apis"
+    - label: "Auth0 SPA SDK"
+      url: "https://github.com/auth0/auth0-spa-js"

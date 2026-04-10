@@ -19,8 +19,8 @@
 
 <div id="view-unauthenticated" hidden>
   <!-- highlight-start login-signup -->
-  <button onclick="client.loginWithRedirect()">Login</button>
   <button onclick="client.loginWithRedirect({authorizationParams:{screen_hint:'signup'}})">Signup</button>
+  <button onclick="client.loginWithRedirect()">Login</button>
   <!-- highlight-end login-signup -->
 </div>
 
